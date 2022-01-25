@@ -7,7 +7,7 @@ class App extends Component {
 
   async componentWillMount() {
     // Load Web3
-    let web3 = new Web3('https://mainnet.infura.io/v3/953247d0c42b419aa3416810d625cc8c')
+    let web3 = new Web3('https://mainnet.infura.io/v3/75763fda3ace427a80c5efc1fed3f194')
 
     // Fetch latest block
     let latestBlock = await web3.eth.getBlock('latest')
@@ -35,6 +35,7 @@ class App extends Component {
     this.setState({
       latestBlocks: latestBlocks
     })
+    
   }
 
   constructor(props) {
@@ -52,35 +53,34 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-          <a
-            className="navbar-brand col-sm-3 col-md-2 mr-0"
-            href="http://www.dappuniversity.com/bootcamp"
+          <a className="navbar-brand col-sm-3 col-md-2 mr-0"
+            href="https://www.cooldaddydesign.com"
             target="_blank"
-            rel="noopener noreferrer"
-          >
-            Dapp University
+            rel="noopener noreferrer">
+          
+            CoolDaddy ETH Dapp
           </a>
         </nav>
         <div className="container-fluid mt-5">
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto" style={{ width: '800px' }}>
-                <h5>Ethereum Blockchain Explorer</h5>
+                <h4>Ethereum Blockchain Explorer</h4>
                 <div className="row">
                   <div className="col-4">
-                    <div className="bg-light pt-4 pb-3 m-1">
+                    <div className="bg-light pt-5 pb-4 m-1">
                       <h5>Latest Block</h5>
                       <p>{this.state.blockNumber}</p>
                     </div>
                   </div>
                   <div className="col-4">
-                    <div className="bg-light pt-4 pb-3 m-1">
+                    <div className="bg-light pt-5 pb-4 m-1">
                       <h5>Difficulty</h5>
                       <p>{this.state.difficulty}</p>
                     </div>
                   </div>
                   <div className="col-4">
-                    <div className="bg-light pt-4 pb-3 m-1">
+                    <div className="bg-light pt-5 pb-4 m-1">
                       <h5>Gas Price</h5>
                       <p>{this.state.gasPrice}</p>
                     </div>
@@ -107,12 +107,14 @@ class App extends Component {
                           </thead>
                           <tbody>
                             { this.state.latestBlocks.map((block, key) => {
+                              var myDate = new Date();
+                              
                               return (
                                 <tr key={key} >
                                   <th scope="row">{block.number}</th>
                                   <td>{block.hash.substring(0,20)}...</td>
                                   <td>{block.miner.substring(0,20)}...</td>
-                                  <td>{block.timestamp}</td>
+                                  <td>{(myDate.toLocaleString())}</td>
                                 </tr>
                               )
                             }) }
